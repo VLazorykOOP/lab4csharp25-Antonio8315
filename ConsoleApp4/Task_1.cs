@@ -75,21 +75,70 @@ public class Task_1
             // Властивість для отримання кольору (тільки для читання)
             public string Color => color;
 
+            /* ПОЧАТОК 4-Ї ЛАБОРАТОРНОЇ */
             // Індексатор
-            class side<T>
+            public object this[int index]
             {
-                private T[] arr = new T[100];
-                public T this[int i]
+                get
                 {
-                    get { return arr[i]; }
-                    set { arr[i] = value; }
+                    return index switch
+                    {
+                        0 => a,
+                        1 => b,
+                        2 => c,
+                        3 => color,
+                        _ => "ERROR, incorrect index",
+                    };
+                }
+                set
+                {
+
                 }
             }
             
+            // Оператор ++
+            public static Triangle operator ++(Triangle t)
+            {
+                return new Triangle(t.a + 1, t.b + 1, t.c + 1, t.color);
+            }
+
+            // Оператор --
+            public static Triangle operator --(Triangle t)
+            {
+                return new Triangle(t.a - 1, t.b - 1, t.c - 1, t.color);
+            }
+
+            // Оператори true / false
+            public static bool operator true(Triangle t)
+            {
+                return t.IsValidTriangle(t.a, t.b, t.c);
+            }
+            public static bool operator false(Triangle t)
+            {
+                return !t.IsValidTriangle(t.a, t.b, t.c);
+            }
+
+            // Множення сторін на скаляр
+            public static Triangle operator *(Triangle t, int scalar)
+            {
+                return new Triangle(t.a * scalar, t.b * scalar, t.c * scalar, t.color);
+            }
+
+            // Перетворення типу Triangle в string ( і навпаки)
+            public static implicit operator string(Triangle t)
+            {
+                return t.GetInfo();
+            }
+
+            public static explicit operator Triangle(string str)
+            {
+                var parts = str.Split(',');
+                return new Triangle(int.Parse(parts[0]), int.Parse(parts[1]), int.Parse(parts[2]), parts[3]);
+            }
         }
+
             
-            
-            public void main1()
+        public void main1()
             {
                 Triangle triangle1 = new Triangle(3, 4, 5, "Red");
                 Console.WriteLine(triangle1.GetSides());
@@ -99,18 +148,42 @@ public class Task_1
 
                 // Зміна сторін (успішно, бо трикутник існує)
                 triangle1.A = 6;
-                triangle1.B = 6;
-                triangle1.C = 6;
+                triangle1.B = 7;
+                triangle1.C = 8;
                 Console.WriteLine(triangle1.GetInfo());
 
                 // Звернення до полів трикутника за допомогою індексатора
-                var sideA = new Triangle.side<int>(triangle1.A);
-                sideA[0] = 10;
-                Console.WriteLine(sideA[0]);
+                Console.WriteLine(triangle1[0]);
+                Console.WriteLine(triangle1[1]);
+                Console.WriteLine(triangle1[2]);
+                Console.WriteLine(triangle1[3]);
+                Console.WriteLine(triangle1[4]);
+                triangle1++;
+                Console.WriteLine(triangle1.GetInfo());
+                triangle1--;
+                Console.WriteLine(triangle1.GetInfo());
 
-                var sideB = new Triangle.side<int>(triangle1.B);
-                sideB[1] = 10;
-                Console.WriteLine(sideA[1]);
+                // Перевірка сталих True / False
+                Triangle t = new Triangle(3, 4, 5, "Red");
+                if (t)
+                {
+                    Console.WriteLine("Трикутник існує!");
+                }
+                else
+                {
+                    Console.WriteLine("Трикутник неіснуючий!");
+                }
+
+                triangle1 = triangle1 * 3;
+                Console.WriteLine(triangle1.GetInfo());
+                
+                // Перетворення з Triangle в String
+                string triangleStr = triangle1;
+                Console.WriteLine(triangleStr);
+
+                // Перетворення зі String в Triangle
+                Triangle triangle2 = (Triangle)"6,7,8,Blue";
+                Console.WriteLine(triangle2.GetInfo());
             }
 }
 }

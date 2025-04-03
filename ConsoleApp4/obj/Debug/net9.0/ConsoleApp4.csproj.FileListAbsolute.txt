@@ -12,3 +12,4 @@ c:\Users\Smart\OneDrive\Робочий стіл\C#\lab4csharp25-Antonio8315\Cons
 c:\Users\Smart\OneDrive\Робочий стіл\C#\lab4csharp25-Antonio8315\ConsoleApp4\obj\Debug\net9.0\ConsoleApp4.pdb
 C:\Users\Smart\OneDrive\Робочий стіл\C#\lab4csharp25-Antonio8315\ConsoleApp4\obj\Debug\net9.0\ConsoleApp4.genruntimeconfig.cache
 C:\Users\Smart\OneDrive\Робочий стіл\C#\lab4csharp25-Antonio8315\ConsoleApp4\obj\Debug\net9.0\ref\ConsoleApp4.dll
+c:\Users\Smart\OneDrive\Робочий стіл\C#\lab4csharp25-Antonio8315\ConsoleApp4\obj\Debug\net9.0\ConsoleApp4.sourcelink.json
