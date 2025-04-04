@@ -53,6 +53,8 @@ public class Task_1
                 return $"Сторони трикутника: a = {a}, b = {b}, c = {c}, Колір: {color}";
             }
 
+            // ВЛАСТИВОСТІ
+            
             // Властивості для отримання та встановлення довжин сторін
             public int A
             {
@@ -129,7 +131,6 @@ public class Task_1
             {
                 return t.GetInfo();
             }
-
             public static explicit operator Triangle(string str)
             {
                 var parts = str.Split(',');
@@ -152,14 +153,19 @@ public class Task_1
                 triangle1.C = 8;
                 Console.WriteLine(triangle1.GetInfo());
 
+                /* ПОЧАТОК 4-Ї ЛАБОРАТОРНОЇ */
                 // Звернення до полів трикутника за допомогою індексатора
                 Console.WriteLine(triangle1[0]);
                 Console.WriteLine(triangle1[1]);
                 Console.WriteLine(triangle1[2]);
                 Console.WriteLine(triangle1[3]);
-                Console.WriteLine(triangle1[4]);
+                Console.WriteLine(triangle1[4]); // Помилка
+
+                // Оператор ++
                 triangle1++;
                 Console.WriteLine(triangle1.GetInfo());
+
+                // Оператор --
                 triangle1--;
                 Console.WriteLine(triangle1.GetInfo());
 
@@ -174,6 +180,7 @@ public class Task_1
                     Console.WriteLine("Трикутник неіснуючий!");
                 }
 
+                // Множення всіх сторін на скаляр (3)
                 triangle1 = triangle1 * 3;
                 Console.WriteLine(triangle1.GetInfo());
                 
