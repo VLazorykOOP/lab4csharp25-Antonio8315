@@ -435,11 +435,94 @@ namespace Task_2
                     result.IntArray[i] = v.IntArray[i] << (int)val;
                 return result;
             }
+
+            // Операція == (рівність)
+            public static bool operator ==(VectorUInt v1, VectorUInt v2)
+            {
+                if (v1.IntArray.Length != v2.IntArray.Length) return false;
+
+                for (int i = 0; i < v1.IntArray.Length; i++)
+                {
+                    if (v1.IntArray[i] != v2.IntArray[i])
+                        return false;
+                }
+                return true;
+            }
+
+            // Операція != (нерівність)
+            public static bool operator !=(VectorUInt v1, VectorUInt v2)
+            {
+                return !(v1 == v2);
+            }
+
+            // Equals - для == і !=
+            public override bool Equals(object? obj)
+            {
+                if (obj is VectorUInt other)
+                    return this == other;
+                return false;
+            }
+
+            // GetHashCode - для == і !=
+            public override int GetHashCode()
+            {
+                int hash = 17;
+                foreach (uint val in IntArray)
+                    hash = hash * 31 + val.GetHashCode();
+                return hash;
+            }
+
+            // ПОРІВНЯННЯ
+            // a. > (більше) для двох векторів; 
+            public static bool operator >(VectorUInt v1, VectorUInt v2)
+            {
+                if (v1.IntArray.Length != v2.IntArray.Length) throw new ArgumentException("Вектори повинні бути однакової довжини.");
+
+                for (int i = 0; i < v1.IntArray.Length; i++)
+                {
+                    if (v1.IntArray[i] <= v2.IntArray[i]) return false; // Якщо є хоча б одне менше або рівне, повертаємо false
+                }
+                return true;
+            }
+
+            // b. >= (більше рівне) для двох векторів;
+            public static bool operator >=(VectorUInt v1, VectorUInt v2)
+            {
+                if (v1.IntArray.Length != v2.IntArray.Length) throw new ArgumentException("Вектори повинні бути однакової довжини.");
+
+                for (int i = 0; i < v1.IntArray.Length; i++)
+                {
+                    if (v1.IntArray[i] < v2.IntArray[i]) return false; // Якщо є хоча б одне менше, повертаємо false
+                }
+                return true;
+            }
+
+            // c. < (менше) для двох векторів;
+            public static bool operator <(VectorUInt v1, VectorUInt v2)
+            {
+                if (v1.IntArray.Length != v2.IntArray.Length) throw new ArgumentException("Вектори повинні бути однакової довжини.");
+
+                for (int i = 0; i < v1.IntArray.Length; i++)
+                {
+                    if (v1.IntArray[i] >= v2.IntArray[i]) return false; // Якщо є хоча б одне більше або рівне, повертаємо false
+                }
+                return true;
+            }
+
+            // d. <=(менше рівне) для двох векторів.
+            public static bool operator <=(VectorUInt v1, VectorUInt v2)
+            {
+                if (v1.IntArray.Length != v2.IntArray.Length) throw new ArgumentException("Вектори повинні бути однакової довжини.");
+
+                for (int i = 0; i < v1.IntArray.Length; i++)
+                {
+                    if (v1.IntArray[i] > v2.IntArray[i]) return false; // Якщо є хоча б одне більше, повертаємо false
+                }
+                return true;
+            }
         }
         public void main2()
         {
-
-            uint[] vector0 = new uint[0];
             VectorUInt vector1 = new VectorUInt();
             VectorUInt vector2 = new VectorUInt(5);
             VectorUInt vector3 = new VectorUInt(5, 1);
@@ -599,58 +682,79 @@ namespace Task_2
             // ПОБІТОВІ БІНАРНІ ОПЕРАЦІЇ
             // a. | (побітове додавання) 
             // i. для двох векторів
-            VectorUInt bitOr = vector8 | vector9;
-            Console.WriteLine("vector8 | vector9:");
-            bitOr.PrintArray();
+            // VectorUInt bitOr = vector8 | vector9;
+            // Console.WriteLine("vector8 | vector9:");
+            // bitOr.PrintArray();
 
-            // ii. для вектора і скаляра типу uint;
-            VectorUInt bitOrScalar = vector8 | 2;
-            Console.WriteLine("vector8 | 2:");
-            bitOrScalar.PrintArray();
+            // // ii. для вектора і скаляра типу uint;
+            // VectorUInt bitOrScalar = vector8 | 2;
+            // Console.WriteLine("vector8 | 2:");
+            // bitOrScalar.PrintArray();
 
-            // b. ^ (побітове додавання за модулем 2) 
-            // i. для двох векторів
-            VectorUInt bitXor = vector8 ^ vector9;
-            Console.WriteLine("vector8 ^ vector9:");
-            bitXor.PrintArray();
+            // // b. ^ (побітове додавання за модулем 2) 
+            // // i. для двох векторів
+            // VectorUInt bitXor = vector8 ^ vector9;
+            // Console.WriteLine("vector8 ^ vector9:");
+            // bitXor.PrintArray();
 
-            // ii. для вектора і скаляра типу uint;
-            VectorUInt bitXorScalar = vector8 ^ 2;
-            Console.WriteLine("vector8 ^ 2:");
-            bitXorScalar.PrintArray();
+            // // ii. для вектора і скаляра типу uint;
+            // VectorUInt bitXorScalar = vector8 ^ 2;
+            // Console.WriteLine("vector8 ^ 2:");
+            // bitXorScalar.PrintArray();
 
-            // c. & (побітове множення) 
-            // i. двох векторів
-            VectorUInt bitAnd = vector8 & vector9;
-            Console.WriteLine("vector8 & vector9:");
-            bitAnd.PrintArray();
+            // // c. & (побітове множення) 
+            // // i. двох векторів
+            // VectorUInt bitAnd = vector8 & vector9;
+            // Console.WriteLine("vector8 & vector9:");
+            // bitAnd.PrintArray();
 
-            // ii. вектора і скаляра типу uint;
-            VectorUInt bitAndScalar = vector8 & 3;
-            Console.WriteLine("vector8 & 3:");
-            bitAndScalar.PrintArray();
+            // // ii. вектора і скаляра типу uint;
+            // VectorUInt bitAndScalar = vector8 & 3;
+            // Console.WriteLine("vector8 & 3:");
+            // bitAndScalar.PrintArray();
 
-            // d. >> (побітовий зсув право)
-            // i. для двох векторів
-            VectorUInt shiftRight = vector8 >> vector9;
-            Console.WriteLine("vector8 >> vector9:");
-            shiftRight.PrintArray();
+            // // d. >> (побітовий зсув право)
+            // // i. для двох векторів
+            // VectorUInt shiftRight = vector8 >> vector9;
+            // Console.WriteLine("vector8 >> vector9:");
+            // shiftRight.PrintArray();
 
-            // ii. вектора і скаляра типу uint;
-            VectorUInt shiftRightScalar = vector8 >> 1;
-            Console.WriteLine("vector8 >> 1:");
-            shiftRightScalar.PrintArray();
+            // // ii. вектора і скаляра типу uint;
+            // VectorUInt shiftRightScalar = vector8 >> 1;
+            // Console.WriteLine("vector8 >> 1:");
+            // shiftRightScalar.PrintArray();
 
-            // e. << (побітовий зсув ліво)
-            // i. для двох векторів
-            VectorUInt shiftLeft = vector8 << vector9;
-            Console.WriteLine("vector8 << vector9:");
-            shiftLeft.PrintArray();
+            // // e. << (побітовий зсув ліво)
+            // // i. для двох векторів
+            // VectorUInt shiftLeft = vector8 << vector9;
+            // Console.WriteLine("vector8 << vector9:");
+            // shiftLeft.PrintArray();
 
-            // ii. вектора і скаляра типу uint;
-            VectorUInt shiftLeftScalar = vector8 << 1;
-            Console.WriteLine("vector8 << 1:");
-            shiftLeftScalar.PrintArray();
+            // // ii. вектора і скаляра типу uint;
+            // VectorUInt shiftLeftScalar = vector8 << 1;
+            // Console.WriteLine("vector8 << 1:");
+            // shiftLeftScalar.PrintArray();
+
+            // Операції == та !=
+            // Console.WriteLine(vector8 == vector9);
+            // Console.WriteLine(vector8 != vector9);
+
+            // // Порівняння
+            // // a. > (більше) для двох векторів; 
+            // Console.WriteLine("vector8 > vector9?");
+            // Console.WriteLine(vector8 > vector9);
+
+            // // b. >= (більше рівне) для двох векторів;
+            // Console.WriteLine("vector8 >= vector9?");
+            // Console.WriteLine(vector8 >= vector9);
+
+            // // c. < (менше) для двох векторів;
+            // Console.WriteLine("vector8 < vector9?");
+            // Console.WriteLine(vector8 < vector9);
+
+            // // d. <=(менше рівне) для двох векторів.
+            // Console.WriteLine("vector8 <= vector9?");
+            // Console.WriteLine(vector8 <= vector9);
         }
     }
 }
