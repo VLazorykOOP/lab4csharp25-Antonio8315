@@ -92,10 +92,6 @@ public class Task_1
                         _ => "ERROR, incorrect index",
                     };
                 }
-                set
-                {
-
-                }
             }
             
             // Оператор ++
@@ -151,7 +147,9 @@ public class Task_1
                 triangle1.A = 6;
                 triangle1.B = 7;
                 triangle1.C = 8;
-                Console.WriteLine(triangle1.GetInfo());
+                Console.WriteLine(triangle1.A);
+                Console.WriteLine(triangle1.B);
+                Console.WriteLine(triangle1.C);
 
                 /* ПОЧАТОК 4-Ї ЛАБОРАТОРНОЇ */
                 // Звернення до полів трикутника за допомогою індексатора
