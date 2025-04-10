@@ -17,6 +17,10 @@ class Program
             Task_2.Task_2 myTask_2 = new Task_2.Task_2();
             myTask_2.main2();
         break;
+        case 3: 
+            Task_3.Task_3 myTask_3 = new Task_3.Task_3();
+            myTask_3.main3();
+        break;
         default:
             break;
         }

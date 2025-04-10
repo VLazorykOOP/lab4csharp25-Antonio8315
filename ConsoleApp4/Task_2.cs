@@ -537,224 +537,224 @@ namespace Task_2
 
             // МЕТОДИ
             // Введення елементів з клавіатури
-            //vector1.InputIntArray();
+            vector1.InputIntArray();
 
             // Виведення елементів на екран
-            //vector1.PrintArray();
+            vector1.PrintArray();
 
             // Присвоєння елементам масиву вектора деякого значення, яке задається як параметр
-            //vector2.ChangeArrayByEnteredParameter();
-            //vector2.PrintArray();
+            vector2.ChangeArrayByEnteredParameter();
+            vector2.PrintArray();
 
             // Підрахування кількості векторів даного типу
-            //Console.WriteLine(vector3.NumOfVectors());
+            Console.WriteLine(vector3.NumOfVectors());
 
             // Присвоєння елементам масиву вектора деякого значення (параметр)
-            // vector3.ChangeArrayByParameter(9);
-            // vector3.PrintArray();
+            vector3.ChangeArrayByParameter(9);
+            vector3.PrintArray();
 
             // ВЛАСТИВОСТІ
             // повернення розмірності вектора
-            //Console.WriteLine(vector3.VlNumOfVectors);
+            Console.WriteLine(vector3.VlNumOfVectors);
 
             // Отримання-встановлення значення поля codeError
-            // vector4.VlCodeOfError = 404;
-            // Console.WriteLine(vector4.VlCodeOfError);
+            vector4.VlCodeOfError = 404;
+            Console.WriteLine(vector4.VlCodeOfError);
 
             //Звернення до масиву за допомогою індексатора
-            // Console.WriteLine(vector5[0]);
-            // Console.WriteLine(vector5[1]);
-            // Console.WriteLine(vector5[2]);
-            // Console.WriteLine(vector5[3]); // Помилка (0)
-            // vector5[0] = 10;
-            // vector5[1] = 11;
-            // vector5[2] = 12;
-            // vector5[3] = 13; // Помилка (запис в codeError)
-            // vector5.PrintArray();
+            Console.WriteLine(vector5[0]);
+            Console.WriteLine(vector5[1]);
+            Console.WriteLine(vector5[2]);
+            Console.WriteLine(vector5[3]); // Помилка (0)
+            vector5[0] = 10;
+            vector5[1] = 11;
+            vector5[2] = 12;
+            vector5[3] = 13; // Помилка (запис в codeError)
+            vector5.PrintArray();
 
             // ПЕРЕВАНТАЖЕННЯ
             // Оператори ++ / --
-            // vector5++;
-            // vector5.PrintArray();
-            // vector5--;
-            // vector5.PrintArray();
+            vector5++;
+            vector5.PrintArray();
+            vector5--;
+            vector5.PrintArray();
 
             // Перевірка сталих True / False
-            // if (vector5)
-            // {
-            //     Console.WriteLine("Вектор пустий, або складається з нулів!");
-            // }
-            // else
-            // {
-            //     Console.WriteLine("Вектор не пустий і не з нулів!");
-            // }
-            // if (vector6)
-            // {
-            //     Console.WriteLine("Вектор пустий, або складається з нулів!");
-            // }
-            // else
-            // {
-            //     Console.WriteLine("Вектор не пустий і не з нулів!");
-            // }
-            // if (vector7)
-            // {
-            //     Console.WriteLine("Вектор пустий, або складається з нулів!");
-            // }
-            // else
-            // {
-            //     Console.WriteLine("Вектор не пустий і не з нулів!");
-            // }
+            if (vector5)
+            {
+                Console.WriteLine("Вектор пустий, або складається з нулів!");
+            }
+            else
+            {
+                Console.WriteLine("Вектор не пустий і не з нулів!");
+            }
+            if (vector6)
+            {
+                Console.WriteLine("Вектор пустий, або складається з нулів!");
+            }
+            else
+            {
+                Console.WriteLine("Вектор не пустий і не з нулів!");
+            }
+            if (vector7)
+            {
+                Console.WriteLine("Вектор пустий, або складається з нулів!");
+            }
+            else
+            {
+                Console.WriteLine("Вектор не пустий і не з нулів!");
+            }
 
             // Унарна логічна операція ! "заперечення"
-            // if (!vector6){
-            //     Console.WriteLine("Вектор не пустий (size != 0)");
-            // }
-            // else{
-            //     Console.WriteLine("Вектор пустий (size == 0)");
-            // }
-            // if (!vector7){
-            //     Console.WriteLine("Вектор не пустий (size != 0)");
-            // }
-            // else{
-            //     Console.WriteLine("Вектор пустий (size == 0)");
-            // }
+            if (!vector6){
+                Console.WriteLine("Вектор не пустий (size != 0)");
+            }
+            else{
+                Console.WriteLine("Вектор пустий (size == 0)");
+            }
+            if (!vector7){
+                Console.WriteLine("Вектор не пустий (size != 0)");
+            }
+            else{
+                Console.WriteLine("Вектор пустий (size == 0)");
+            }
 
             // Унарна побітова операція ~ "заперечення"
-            // VectorUInt inverted = ~vector3;
-            // inverted.PrintArray(); 
+            VectorUInt inverted = ~vector3;
+            inverted.PrintArray(); 
 
             // АРИФМЕТИЧНІ БІНАРНІ ОПЕРАЦІЇ
             // a. + додавання:
             // i. для двох векторів
-            // VectorUInt sumVec = vector8 + vector9;
-            // Console.WriteLine("Сума векторів: ");
-            // sumVec.PrintArray();
+            VectorUInt sumVec = vector8 + vector9;
+            Console.WriteLine("Сума векторів: ");
+            sumVec.PrintArray();
 
-            // // ii. для вектора і скаляра типу int
-            // VectorUInt addScalar = vector8 + 5;
-            // Console.WriteLine("Вектор + 5:");
-            // addScalar.PrintArray();
+            // ii. для вектора і скаляра типу int
+            VectorUInt addScalar = vector8 + 5;
+            Console.WriteLine("Вектор + 5:");
+            addScalar.PrintArray();
 
-            // // b. - (віднімання): 
-            // // i. для двох векторів
-            // VectorUInt diffVec = vector9 - vector8;
-            // Console.WriteLine("Різниця векторів:");
-            // diffVec.PrintArray();
+            // b. - (віднімання): 
+            // i. для двох векторів
+            VectorUInt diffVec = vector9 - vector8;
+            Console.WriteLine("Різниця векторів:");
+            diffVec.PrintArray();
 
-            // // ii. для вектора і скаляра типу int;
-            // VectorUInt subScalar = vector8 - 2;
-            // Console.WriteLine("Вектор - 10:");
-            // subScalar.PrintArray();
+            // ii. для вектора і скаляра типу int;
+            VectorUInt subScalar = vector8 - 2;
+            Console.WriteLine("Вектор - 10:");
+            subScalar.PrintArray();
 
-            // // c. *(множення)
-            // // i. для двох векторів
-            // VectorUInt mulVec = vector8 * vector9;
-            // Console.WriteLine("vector8 * vector9:");
-            // mulVec.PrintArray();
+            // c. *(множення)
+            // i. для двох векторів
+            VectorUInt mulVec = vector8 * vector9;
+            Console.WriteLine("vector8 * vector9:");
+            mulVec.PrintArray();
 
-            // // ii. для вектора і скаляра типу int;
-            // VectorUInt mulScalar = vector8 * 3;
-            // Console.WriteLine("vector8 * 3:");
-            // mulScalar.PrintArray();
+            // ii. для вектора і скаляра типу int;
+            VectorUInt mulScalar = vector8 * 3;
+            Console.WriteLine("vector8 * 3:");
+            mulScalar.PrintArray();
 
-            // // d. / (ділення) 
-            // // i. для двох векторів
-            // VectorUInt divVec = vector9 / vector8;
-            // Console.WriteLine("vector8 / vector9:");
-            // divVec.PrintArray();
+            // d. / (ділення) 
+            // i. для двох векторів
+            VectorUInt divVec = vector9 / vector8;
+            Console.WriteLine("vector8 / vector9:");
+            divVec.PrintArray();
 
-            // // ii. для вектора і скаляра типу short;
-            // VectorUInt divScalar = vector8 / (short)3;
-            // Console.WriteLine("vector8 / 3:");
-            // divScalar.PrintArray();
+            // ii. для вектора і скаляра типу short;
+            VectorUInt divScalar = vector8 / (short)3;
+            Console.WriteLine("vector8 / 3:");
+            divScalar.PrintArray();
 
-            // // e. % (остача від ділення) 
-            // // i. для двох векторів
-            // VectorUInt modVec = vector9 % vector8;
-            // Console.WriteLine("vector9 % vector8:");
-            // modVec.PrintArray();
+            // e. % (остача від ділення) 
+            // i. для двох векторів
+            VectorUInt modVec = vector9 % vector8;
+            Console.WriteLine("vector9 % vector8:");
+            modVec.PrintArray();
 
-            // // ii. для вектора і скаляра типу short;
-            // VectorUInt modScalar = vector8 % (short)4;
-            // Console.WriteLine("vector8 % 4:");
-            // modScalar.PrintArray();
+            // ii. для вектора і скаляра типу short;
+            VectorUInt modScalar = vector8 % (short)4;
+            Console.WriteLine("vector8 % 4:");
+            modScalar.PrintArray();
 
             // ПОБІТОВІ БІНАРНІ ОПЕРАЦІЇ
             // a. | (побітове додавання) 
             // i. для двох векторів
-            // VectorUInt bitOr = vector8 | vector9;
-            // Console.WriteLine("vector8 | vector9:");
-            // bitOr.PrintArray();
+            VectorUInt bitOr = vector8 | vector9;
+            Console.WriteLine("vector8 | vector9:");
+            bitOr.PrintArray();
 
-            // // ii. для вектора і скаляра типу uint;
-            // VectorUInt bitOrScalar = vector8 | 2;
-            // Console.WriteLine("vector8 | 2:");
-            // bitOrScalar.PrintArray();
+            // ii. для вектора і скаляра типу uint;
+            VectorUInt bitOrScalar = vector8 | 2;
+            Console.WriteLine("vector8 | 2:");
+            bitOrScalar.PrintArray();
 
-            // // b. ^ (побітове додавання за модулем 2) 
-            // // i. для двох векторів
-            // VectorUInt bitXor = vector8 ^ vector9;
-            // Console.WriteLine("vector8 ^ vector9:");
-            // bitXor.PrintArray();
+            // b. ^ (побітове додавання за модулем 2) 
+            // i. для двох векторів
+            VectorUInt bitXor = vector8 ^ vector9;
+            Console.WriteLine("vector8 ^ vector9:");
+            bitXor.PrintArray();
 
-            // // ii. для вектора і скаляра типу uint;
-            // VectorUInt bitXorScalar = vector8 ^ 2;
-            // Console.WriteLine("vector8 ^ 2:");
-            // bitXorScalar.PrintArray();
+            // ii. для вектора і скаляра типу uint;
+            VectorUInt bitXorScalar = vector8 ^ 2;
+            Console.WriteLine("vector8 ^ 2:");
+            bitXorScalar.PrintArray();
 
-            // // c. & (побітове множення) 
-            // // i. двох векторів
-            // VectorUInt bitAnd = vector8 & vector9;
-            // Console.WriteLine("vector8 & vector9:");
-            // bitAnd.PrintArray();
+            // c. & (побітове множення) 
+            // i. двох векторів
+            VectorUInt bitAnd = vector8 & vector9;
+            Console.WriteLine("vector8 & vector9:");
+            bitAnd.PrintArray();
 
-            // // ii. вектора і скаляра типу uint;
-            // VectorUInt bitAndScalar = vector8 & 3;
-            // Console.WriteLine("vector8 & 3:");
-            // bitAndScalar.PrintArray();
+            // ii. вектора і скаляра типу uint;
+            VectorUInt bitAndScalar = vector8 & 3;
+            Console.WriteLine("vector8 & 3:");
+            bitAndScalar.PrintArray();
 
-            // // d. >> (побітовий зсув право)
-            // // i. для двох векторів
-            // VectorUInt shiftRight = vector8 >> vector9;
-            // Console.WriteLine("vector8 >> vector9:");
-            // shiftRight.PrintArray();
+            // d. >> (побітовий зсув право)
+            // i. для двох векторів
+            VectorUInt shiftRight = vector8 >> vector9;
+            Console.WriteLine("vector8 >> vector9:");
+            shiftRight.PrintArray();
 
-            // // ii. вектора і скаляра типу uint;
-            // VectorUInt shiftRightScalar = vector8 >> 1;
-            // Console.WriteLine("vector8 >> 1:");
-            // shiftRightScalar.PrintArray();
+            // ii. вектора і скаляра типу uint;
+            VectorUInt shiftRightScalar = vector8 >> 1;
+            Console.WriteLine("vector8 >> 1:");
+            shiftRightScalar.PrintArray();
 
-            // // e. << (побітовий зсув ліво)
-            // // i. для двох векторів
-            // VectorUInt shiftLeft = vector8 << vector9;
-            // Console.WriteLine("vector8 << vector9:");
-            // shiftLeft.PrintArray();
+            // e. << (побітовий зсув ліво)
+            // i. для двох векторів
+            VectorUInt shiftLeft = vector8 << vector9;
+            Console.WriteLine("vector8 << vector9:");
+            shiftLeft.PrintArray();
 
-            // // ii. вектора і скаляра типу uint;
-            // VectorUInt shiftLeftScalar = vector8 << 1;
-            // Console.WriteLine("vector8 << 1:");
-            // shiftLeftScalar.PrintArray();
+            // ii. вектора і скаляра типу uint;
+            VectorUInt shiftLeftScalar = vector8 << 1;
+            Console.WriteLine("vector8 << 1:");
+            shiftLeftScalar.PrintArray();
 
             // Операції == та !=
-            // Console.WriteLine(vector8 == vector9);
-            // Console.WriteLine(vector8 != vector9);
+            Console.WriteLine(vector8 == vector9);
+            Console.WriteLine(vector8 != vector9);
 
-            // // Порівняння
-            // // a. > (більше) для двох векторів; 
-            // Console.WriteLine("vector8 > vector9?");
-            // Console.WriteLine(vector8 > vector9);
+            // Порівняння
+            // a. > (більше) для двох векторів; 
+            Console.WriteLine("vector8 > vector9?");
+            Console.WriteLine(vector8 > vector9);
 
-            // // b. >= (більше рівне) для двох векторів;
-            // Console.WriteLine("vector8 >= vector9?");
-            // Console.WriteLine(vector8 >= vector9);
+            // b. >= (більше рівне) для двох векторів;
+            Console.WriteLine("vector8 >= vector9?");
+            Console.WriteLine(vector8 >= vector9);
 
-            // // c. < (менше) для двох векторів;
-            // Console.WriteLine("vector8 < vector9?");
-            // Console.WriteLine(vector8 < vector9);
+            // c. < (менше) для двох векторів;
+            Console.WriteLine("vector8 < vector9?");
+            Console.WriteLine(vector8 < vector9);
 
-            // // d. <=(менше рівне) для двох векторів.
-            // Console.WriteLine("vector8 <= vector9?");
-            // Console.WriteLine(vector8 <= vector9);
+            // d. <=(менше рівне) для двох векторів.
+            Console.WriteLine("vector8 <= vector9?");
+            Console.WriteLine(vector8 <= vector9);
         }
     }
 }
