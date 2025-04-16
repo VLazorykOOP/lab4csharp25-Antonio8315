@@ -108,20 +108,6 @@ namespace Task_2
                 }
             }
 
-            // Перевіряє, чи у масиві всі елементи == 0 (для перевантаження сталих true / false)
-            public bool ElementsIsZero()
-            {
-                bool fullZero = true;
-                for (int i = 0; i < IntArray.Length; i++)
-                {
-                    if (IntArray[i] != 0)
-                    {
-                        fullZero = false;
-                    }
-                }
-                return fullZero;
-            }
-
             // ВЛАСТИВОСТІ
 
             // Повертає розмірність вектора (доступні лише для читання);
@@ -190,14 +176,23 @@ namespace Task_2
             }
 
             // Оператори true / false
-            public static bool operator true(VectorUInt v)
+            public static bool operator true(VectorUInt matrix)
             {
-                return v.size == 0 || v.ElementsIsZero();
+                if (matrix.size == 0)
+                    return false;
+                foreach (uint i in matrix.IntArray)
+                    if (i != 0) return true;
+                return false;
             }
-            public static bool operator false(VectorUInt v)
+            public static bool operator false(VectorUInt matrix)
             {
-                return v.size != 0 || !v.ElementsIsZero();
+                if (matrix.size == 0)
+                    return true;
+                foreach (uint i in matrix.IntArray)
+                    if (i != 0) return false;
+                return true;
             }
+
 
             // Оператор заперечення "!"
             public static bool operator !(VectorUInt v)
@@ -582,46 +577,50 @@ namespace Task_2
             // Перевірка сталих True / False
             if (vector5)
             {
-                Console.WriteLine("Вектор пустий, або складається з нулів!");
+                Console.WriteLine("Вектор не пустий і не з нулів!");
             }
             else
             {
-                Console.WriteLine("Вектор не пустий і не з нулів!");
+                Console.WriteLine("Вектор пустий, або складається з нулів!");
             }
             if (vector6)
             {
-                Console.WriteLine("Вектор пустий, або складається з нулів!");
+                Console.WriteLine("Вектор не пустий і не з нулів!");
             }
             else
             {
-                Console.WriteLine("Вектор не пустий і не з нулів!");
+                Console.WriteLine("Вектор пустий, або складається з нулів!");
             }
             if (vector7)
             {
-                Console.WriteLine("Вектор пустий, або складається з нулів!");
+                Console.WriteLine("Вектор не пустий і не з нулів!");
             }
             else
             {
-                Console.WriteLine("Вектор не пустий і не з нулів!");
+                Console.WriteLine("Вектор пустий, або складається з нулів!");
             }
 
             // Унарна логічна операція ! "заперечення"
-            if (!vector6){
+            if (!vector6)
+            {
                 Console.WriteLine("Вектор не пустий (size != 0)");
             }
-            else{
+            else
+            {
                 Console.WriteLine("Вектор пустий (size == 0)");
             }
-            if (!vector7){
+            if (!vector7)
+            {
                 Console.WriteLine("Вектор не пустий (size != 0)");
             }
-            else{
+            else
+            {
                 Console.WriteLine("Вектор пустий (size == 0)");
             }
 
             // Унарна побітова операція ~ "заперечення"
             VectorUInt inverted = ~vector3;
-            inverted.PrintArray(); 
+            inverted.PrintArray();
 
             // АРИФМЕТИЧНІ БІНАРНІ ОПЕРАЦІЇ
             // a. + додавання:

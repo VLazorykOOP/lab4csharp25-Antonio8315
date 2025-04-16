@@ -41,6 +41,15 @@ namespace Task_3
                 num_m++;
             }
 
+            // Спеціальний конструктор. Створює пусту матрицю із n = 0 і m = 0. Потрібен для перевантяження True / False
+            public MatrixUint(uint p1, uint p2, uint p3, uint p4)
+            {
+                n = 0;
+                m = 0;
+                IntArray = new uint[n, m];
+                num_m++;
+            }
+
             // Деструктор
             ~MatrixUint()
             {
@@ -76,7 +85,7 @@ namespace Task_3
             }
 
             // Присвоює елементам масиву вектора деякого значення, яке задається як параметр
-            public void ChangeMatrixByEnteredParameter(uint value)
+            public void ChangeMatrixByEnteredParameter()
             {
                 Console.Write("Введіть параметр: ");
                 uint parametr = uint.Parse(Console.ReadLine()!);
@@ -92,7 +101,7 @@ namespace Task_3
             }
 
             // Присвоює елементам масиву вектора деякого значення (параметр)
-            public void ChangeMatrixByParameterl(uint value)
+            public void ChangeMatrixByParameter(uint value)
             {
                 for (int i = 0; i < n; i++)
                     for (int j = 0; j < m; j++)
@@ -135,7 +144,7 @@ namespace Task_3
                 }
             }
 
-            // З одним індексом, що дозволяє звертатися за індексом kдо двомірного масиву ( k = i*m + j); 
+            // З одним індексом, що дозволяє звертатися за індексом k до двомірного масиву ( k = i*m + j); 
             public uint this[int k]
             {
                 get
@@ -175,7 +184,7 @@ namespace Task_3
             // Сталі true і false
             public static bool operator true(MatrixUint matrix)
             {
-                if (matrix.n == 0 || matrix.m == 0)
+                if (matrix.n == 0 && matrix.m == 0)
                     return false;
                 foreach (uint val in matrix.IntArray)
                     if (val != 0) return true;
@@ -183,7 +192,7 @@ namespace Task_3
             }
             public static bool operator false(MatrixUint matrix)
             {
-                if (matrix.n == 0 || matrix.m == 0)
+                if (matrix.n == 0 && matrix.m == 0)
                     return true;
                 foreach (uint val in matrix.IntArray)
                     if (val != 0) return false;
@@ -193,7 +202,7 @@ namespace Task_3
             // Унарна логічна операція ! (заперечення)
             public static bool operator !(MatrixUint matrix)
             {
-                return matrix.n == 0 || matrix.m == 0;
+                return matrix.n != 0 && matrix.m != 0;
             }
 
             // Унарна побітова операція ~ (заперечення)
@@ -478,7 +487,7 @@ namespace Task_3
             // c. < (менше) для двох векторів;
             public static bool operator <(MatrixUint a, MatrixUint b) => !(a >= b);
 
-            // d. <=(менше рівне) для двох векторів.
+            // d. <=(менше рівне) для двох матриць.
             public static bool operator <=(MatrixUint a, MatrixUint b) => !(a > b);
         }
 
@@ -488,9 +497,239 @@ namespace Task_3
             MatrixUint matrix2 = new MatrixUint(2, 2);
             MatrixUint matrix3 = new MatrixUint(3, 3, 1);
 
+            // Для перевантажень
+            MatrixUint matrix4 = new MatrixUint(2, 2, 10);
+            MatrixUint matrix5 = new MatrixUint(2, 2, 9);
+            MatrixUint matrix6 = new MatrixUint(0, 0, 0, 0); // Пуста
+            MatrixUint matrix7 = new MatrixUint(1, 1); // Складається з нулів
+
+            // МЕТОДИ
+            // Введення елементів з клавіатури
             matrix2.InputIntArray();
+
+            // Виведення елементів на екран
             matrix2.PrintMatrix();
+
+            // Присвоєння елементам масиву матриці деякого значення, яке задається як параметр
+            matrix3.ChangeMatrixByEnteredParameter();
+            matrix3.PrintMatrix();
+
+            // Підрахування кількості матриць даного типу
             Console.WriteLine("Кількість створених матриць: " + MatrixUint.CountMatrices());
+
+            // Присвоєння елементам масиву матриці деякого значення (параметр)
+            matrix3.ChangeMatrixByParameter(5);
+            matrix3.PrintMatrix();
+
+            // ВЛАСТИВОСТІ
+
+            // повернення розмірності матриці
+            Console.WriteLine(matrix3.Rows);
+            Console.WriteLine(matrix3.Cols);
+
+            // Отримання-встановлення значення поля codeError
+            matrix3.CodeError = 404;
+            Console.WriteLine(matrix3.CodeError);
+
+            // Звернення до масиву за допомогою індексатора з двома індексами, які відповідають індексам масиву
+            Console.WriteLine(matrix3[2, 2]);
+            matrix3[2, 2] = 0;
+            Console.WriteLine(matrix3[2, 2]);
+
+            // Звернення до масиву за допомогою індексатора з одним індексом, що дозволяє звертатися за індексом до двомірного масиву ( k = i*m + j);
+            Console.WriteLine(matrix3[2]);
+            matrix3[2] = 0;
+            Console.WriteLine(matrix3[2]);
+
+            matrix3.PrintMatrix();
+
+            // ПЕРЕВАНТАЖЕННЯ
+            // Оператори ++ / --
+            matrix4++;
+            matrix4.PrintMatrix();
+            matrix4--;
+            matrix4.PrintMatrix();
+
+            // Перевірка сталих True / False
+            if (matrix5)
+            {
+                Console.WriteLine("Матриця не пуста і не з нулів!");
+            }
+            else
+            {
+                Console.WriteLine("Матриця пуста, або складається з нулів!");
+            }
+            if (matrix6)
+            {
+                Console.WriteLine("Матриця не пуста і не з нулів!");
+            }
+            else
+            {
+                Console.WriteLine("Матриця пуста, або складається з нулів!");
+            }
+            if (matrix7)
+            {
+                Console.WriteLine("Матриця не пуста і не з нулів!");
+            }
+            else
+            {
+                Console.WriteLine("Матриця пуста, або складається з нулів!");
+            }
+
+            // Унарна логічна операція ! "заперечення"
+            if (!matrix5)
+            {
+                Console.WriteLine("Матриця не пуста (n != 0, m != 0)");
+            }
+            else
+            {
+                Console.WriteLine("Матриця пуста (n == 0, m == 0)");
+            }
+            if (!matrix6)
+            {
+                Console.WriteLine("Матриця не пуста (n != 0, m != 0)");
+            }
+            else
+            {
+                Console.WriteLine("Матриця пуста (n == 0, m == 0)");
+            }
+
+            // Унарна побітова операція ~ "заперечення"
+            MatrixUint inverted = ~matrix3;
+            inverted.PrintMatrix();
+
+            // АРИФМЕТИЧНІ БІНАРНІ ОПЕРАЦІЇ
+            // a. + додавання:
+            // i. для двох векторів
+            MatrixUint sumMat = matrix4 + matrix5;
+            Console.WriteLine("Сума матриць: ");
+            sumMat.PrintMatrix();
+
+            // ii. для вектора і скаляра типу int
+            MatrixUint addScalar = matrix4 + 5;
+            Console.WriteLine("матриця + 5:");
+            addScalar.PrintMatrix();
+
+            // b. - (віднімання): 
+            // i. для двох векторів
+            MatrixUint diffMat = matrix4 - matrix5;
+            Console.WriteLine("Різниця матриць: ");
+            sumMat.PrintMatrix();
+
+            // ii. для вектора і скаляра типу int
+            MatrixUint diffScalar = matrix4 - 5;
+            Console.WriteLine("різниця - 5:");
+            addScalar.PrintMatrix();
+
+            // c. *(множення)
+            // i. для двох векторів
+            MatrixUint mulMat = matrix4 * matrix5;
+            Console.WriteLine("Добуток матриць: ");
+            sumMat.PrintMatrix();
+
+            // ii. для вектора і скаляра типу int
+            MatrixUint mulScalar = matrix4 * 3;
+            Console.WriteLine("добуток matrix4 * 3:");
+            addScalar.PrintMatrix();
+
+            // d. / (ділення) 
+            // i. для двох векторів
+            MatrixUint divMat = matrix4 / matrix5;
+            Console.WriteLine("Частка матриць: ");
+            sumMat.PrintMatrix();
+
+            // ii. для вектора і скаляра типу int
+            MatrixUint divScalar = matrix4 / 3;
+            Console.WriteLine("частка matrix4 / 3:");
+            addScalar.PrintMatrix();
+
+            // e. % (остача від ділення) 
+            // i. для двох векторів
+            MatrixUint modMat = matrix4 % matrix5;
+            Console.WriteLine("matrix4 % matrix5:");
+            modMat.PrintMatrix();
+
+            // ii. для вектора і скаляра типу short;
+            MatrixUint modScalar = matrix4 % (uint)4;
+            Console.WriteLine("matrix4 % 4:");
+            modScalar.PrintMatrix();
+
+            // ПОБІТОВІ БІНАРНІ ОПЕРАЦІЇ
+            // a. | (побітове додавання) 
+            // i. для двох векторів
+            MatrixUint bitOr = matrix4 | matrix5;
+            Console.WriteLine("matrix4 | matrix5:");
+            bitOr.PrintMatrix();
+
+            // ii. для вектора і скаляра типу uint;
+            MatrixUint bitOrScalar = matrix4 | 2;
+            Console.WriteLine("matrix4 | 2:");
+            bitOrScalar.PrintMatrix();
+
+            // b. ^ (побітове додавання за модулем 2) 
+            // i. для двох векторів
+            MatrixUint bitXor = matrix4 ^ matrix5;
+            Console.WriteLine("matrix4 ^ matrix5:");
+            bitXor.PrintMatrix();
+
+            // ii. для вектора і скаляра типу uint;
+            MatrixUint bitXorScalar = matrix4 ^ 2;
+            Console.WriteLine("matrix4 ^ 2:");
+            bitXorScalar.PrintMatrix();
+
+            // c. & (побітове множення) 
+            // i. двох векторів
+            MatrixUint bitAnd = matrix4 & matrix5;
+            Console.WriteLine("matrix4 & matrix5:");
+            bitAnd.PrintMatrix();
+
+            // ii. вектора і скаляра типу uint;
+            MatrixUint bitAndScalar = matrix4 & 3;
+            Console.WriteLine("matrix4 & 3:");
+            bitAndScalar.PrintMatrix();
+
+            // d. >> (побітовий зсув право)
+            // i. для двох векторів
+            MatrixUint shiftRight = matrix4 >> matrix5;
+            Console.WriteLine("matrix4 >> matrix5:");
+            shiftRight.PrintMatrix();
+
+            // ii. вектора і скаляра типу uint;
+            MatrixUint shiftRightScalar = matrix4 >> 1;
+            Console.WriteLine("matrix4 >> 1:");
+            shiftRightScalar.PrintMatrix();
+
+            // e. << (побітовий зсув ліво)
+            // i. для двох векторів
+            MatrixUint shiftLeft = matrix4 << matrix5;
+            Console.WriteLine("matrix4 << matrix5:");
+            shiftLeft.PrintMatrix();
+
+            // ii. вектора і скаляра типу uint;
+            MatrixUint shiftLeftScalar = matrix4 << 1;
+            Console.WriteLine("matrix4 << 1:");
+            shiftLeftScalar.PrintMatrix();
+
+            // Операції == та !=
+            Console.WriteLine(matrix4 == matrix5);
+            Console.WriteLine(matrix4 != matrix5);
+
+            // Порівняння
+            // a. > (більше) для двох векторів; 
+            Console.WriteLine("matrix4 > matrix5?");
+            Console.WriteLine(matrix4 > matrix5);
+
+            // b. >= (більше рівне) для двох векторів;
+            Console.WriteLine("matrix4 >= matrix5?");
+            Console.WriteLine(matrix4 >= matrix5);
+
+            // c. < (менше) для двох векторів;
+            Console.WriteLine("matrix4 < matrix5?");
+            Console.WriteLine(matrix4 < matrix5);
+
+            // d. <=(менше рівне) для двох векторів.
+            Console.WriteLine("matrix4 <= matrix5?");
+            Console.WriteLine(matrix4 <= matrix5);
         }
     }
 }
